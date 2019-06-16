@@ -11,35 +11,37 @@
 # Window names
 
 # 2x2 screen with 3 off-screen windows
-windows=(upper_left upper_right lower_left lower_right off_screen off_screen2 off_screen3)
-# Make sure to account for each window above in the list below.
+#windows=(upper_left upper_right lower_left lower_right off_screen off_screen2 off_screen3)
 
+# Make sure to account for each window above in the list below.
+windows=(on_screen on_screen1 on_screen2 on_screen3 on_screen4)
 # Windows positions
 
 window_positions=(
 #First Row
 #upper_left
-# 960x540
-"0 0 959 539" \
+# 640x384
+"0 0 639 383" \
 #upper_right
-# 960x540
-"960 0 1919 539" \
+"640 0 1279 383" \
 
-#Second Row (missing all but the far right window because large_left is double size
+#Second Row
 #lower_left
-# 960x540
-"0 540 959 1079" \
+#"0 383 639 767" \
+"0 383 426 767" \
+#middle cam
+"426 383 852 767" \
 #lower_right
-# 960x540
-"960 540 1919 1079" \
+"852 383 1268 767" \
+#"640 383 1279 767" \
 
 #off-screen
 # 960x540 window just off-screen to the right
-"1920 0 2879 539" \
+#"1920 0 2879 539" \
 # 960x540 window just below the other
-"1920 540 2879 1079" \
+#"1920 540 2879 1079" \
 # 960x540 window just off-screen to the left
-"2880 0 3839 539" \
+#"2880 0 3839 539" \
 )
 
 # Camera Names
@@ -50,26 +52,20 @@ camera_names=(NE SE South SW West Vestibule)
 # Camera Feeds
 
 camera_feeds=( \
-# Mid-Res if your RPi can handle the load
-# "rtsp://xxx.xxx.xxx.xxx/yyyyy_1" \
-# Low-Res otherwise
-# "rtsp://xxx.xxx.xxx.xxx/yyyyy_2" \
-#NE
-"<Camera stream URL>" \
-#SE
-"<Camera stream URL>" \
-#South
-"<Camera stream URL>" \
-#SW
-"<Camera stream URL>" \
-#West
-"<Camera stream URL>" \
-#Vestibule
-"<Camera stream URL>" \
+#high-res
+#cam1
+"rtsp://viewer:viewer@192.168.6.224:554/channel1" \
+#cam2
+"rtsp://admin:617161@192.168.6.157:554/stream1" \
+#cam3
+"rtsp://admin:617161@192.168.6.125:554/stream1" \
+#cam4
+"rtsp://admin:617161@192.168.6.28:554/stream1" \
+#cam5
+"rtsp://viewer:viewer@192.168.6.119/channel2" \
 )
 
 # Are we rotating cameras through the window matrix? (default false if not set here)
 # rotate="true"
 
-# A variable setting how many windows to rotate through in one operation.  Setting this to the number of on-screen windows at one time achieves a sort of screen "flop" from one set of feeds to another (or a series of screen fulls)
-# If you set this higher than the number of cameras, the system just sets it back to 1.  Sane values are 1 through the number of cameras configured.
+
